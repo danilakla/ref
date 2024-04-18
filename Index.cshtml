@@ -1,0 +1,56 @@
+@{
+    ViewBag.Title = "Home Page";
+}
+    <h1>AD+IIS</h1>
+    <p>Введите домен</p>
+    <input type="text" id="domain" required>
+    <p>Введите логин</p>
+    <input type="text" id="login" required>
+    <p>Введите пароль</p>
+    <input type="password" id="password" required>
+    <button onclick="auth()">войти</button>
+
+    <div id="content"></div>
+    <script>
+        function auth(){
+            let domain = document.getElementById("domain").value.toUpperCase();
+            let login = document.getElementById("login").value;
+            let password = document.getElementById("password").value;
+            let content = document.getElementById("content");
+            if(domain.trim() === "" || login.trim() === "" || password.trim() === "")
+                return;
+            if(domain === "ADMIN"){
+                if(login === "Администратор"){
+                    if(password === "admin_pass_123"){
+                        content.innerHTML = `<p style="color:green">Добро пожаловать, ${domain}\\${login}<p>`
+                    } else{
+                        content.innerHTML = `<p style="color:red">Неверный пароль<p>`
+                    }
+                } else if(login === "user1"){
+                    if(password === "user1"){
+                        content.innerHTML = `<p style="color:green">Добро пожаловать, ${domain}\\${login}<p>`
+                    } else{
+                        content.innerHTML = `<p style="color:red">Неверный пароль<p>`
+                    }
+                } else if(login === "user2"){
+                    if(password === "user2"){
+                        content.innerHTML = `<p style="color:green">Добро пожаловать, ${domain}\\${login}<p>`
+                    } else{
+                        content.innerHTML = `<p style="color:red">Неверный пароль<p>`
+                    }
+                } else if(login === "user3"){
+                    if(password === "user3"){
+                        content.innerHTML = `<p style="color:green">Добро пожаловать, ${domain}\\${login}<p>`
+                    } else{
+                        content.innerHTML = `<p style="color:red">Неверный пароль<p>`
+                    }
+                } else{
+                    content.innerHTML = `<p style="color:red">Пользователь ${login} не существует<p>`
+                }
+            } else{
+                content.innerHTML = `<p style="color:red">Домен ${domain} не существует<p>`
+            }
+
+        }
+    </script>
+    
